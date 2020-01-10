@@ -33,10 +33,16 @@ test('invalid duration with two arguments', function (assert) {
     assert.ok(isNaN(m.valueOf()));
 });
 
+test('invalid ISO durations', function (assert) {
+    assert.ok(!moment.duration('P1H').isValid(), 'missing T');
+    assert.ok(!moment.duration('P1D1Y').isValid(), 'out of order');
+});
+
 test('invalid duration operations', function (assert) {
     var invalids = [
             moment.duration(NaN),
             moment.duration(NaN, 'days'),
+            moment.duration('not a number'),
             moment.duration.invalid()
         ],
         i,

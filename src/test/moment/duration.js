@@ -416,8 +416,6 @@ test('`isodate` (python) test cases', function (assert) {
 test('ISO 8601 misuse cases', function (assert) {
     assert.equal(moment.duration('P').asSeconds(), 0, 'lonely P');
     assert.equal(moment.duration('PT').asSeconds(), 0, 'just P and T');
-    assert.equal(moment.duration('P1H').asSeconds(), 0, 'missing T');
-    assert.equal(moment.duration('P1D1Y').asSeconds(), 0, 'out of order');
     assert.equal(moment.duration('PT.5S').asSeconds(), 0.5, 'accept no leading zero for decimal');
     assert.equal(moment.duration('PT1,S').asSeconds(), 1, 'accept trailing decimal separator');
     assert.equal(moment.duration('PT1M0,,5S').asSeconds(), 60, 'extra decimal separators are ignored as 0');

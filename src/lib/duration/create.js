@@ -68,6 +68,11 @@ export function createDuration (input, key) {
         duration.M = diffRes.months;
     }
 
+    // Was not able to create a valid representation of the input.
+    if (typeof duration !== 'object') {
+        return invalid();
+    }
+
     ret = new Duration(duration);
 
     if (isDuration(input) && hasOwnProp(input, '_locale')) {
